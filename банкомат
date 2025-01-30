@@ -1,0 +1,48 @@
+def main():
+    balance = 1000.0  
+
+    while True:
+        print("\n=== Банкомат ===")
+        print("1. Переглянути баланс")
+        print("2. Поповнити баланс")
+        print("3. Зняти гроші")
+        print("4. Вихід")
+
+        choice = input("Оберіть дію (1-4): ")
+
+        if choice == "1":
+            print(f"Ваш баланс: {balance:.2f} грн")
+
+        elif choice == "2":
+            try:
+                amount = float(input("Введіть суму поповнення: "))
+                if amount <= 0:
+                    print("Сума повинна бути додатною.")
+                else:
+                    balance += amount
+                    print(f"Баланс поповнено. Поточний баланс: {balance:.2f} грн")
+            except ValueError:
+                print("Введіть коректне число.")
+
+        elif choice == "3":
+            try:
+                amount = float(input("Введіть суму для зняття: "))
+                if amount <= 0:
+                    print("Сума повинна бути додатною.")
+                elif amount > balance:
+                    print("Недостатньо коштів.")
+                else:
+                    balance -= amount
+                    print(f"Знято {amount:.2f} грн. Поточний баланс: {balance:.2f} грн")
+            except ValueError:
+                print("Введіть коректне число.")
+
+        elif choice == "4":
+            print("Дякуємо за користування банкоматом!")
+            break
+
+        else:
+            print("Некоректний вибір, спробуйте ще раз.")
+
+if __name__ == "__main__":
+    main()
